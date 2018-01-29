@@ -16,12 +16,13 @@ function StorageException(message) {
 }
 
 const BlogPosts = {
-  create: function(title, content, author) {
+  create: function(title, content, author, publishDate) {
     const post = {
       id: uuid.v4(),
       title: title,
       content: content,
-      author: author
+      author: author,
+      publishDate: publishDate || Date.now()
     };
     this.posts.push(post);
     return post;
@@ -32,7 +33,11 @@ const BlogPosts = {
     if (id !== null) {
       return this.posts.find(post => post.id === id);
     }
-    return post;
+    // return posts sorted (descending) by
+    // publish date
+    return this.posts.sort(function(a, b) {
+      return b.publishDate - a.publishDate
+    });
   },
   delete: function(id) {
     const postIndex = this.posts.findIndex(
@@ -60,5 +65,6 @@ function createBlogPostsModel() {
   storage.posts = [];
   return storage;
 }
+
 
 module.exports = {BlogPosts: createBlogPostsModel()};

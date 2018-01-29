@@ -4,12 +4,14 @@
   "description": "new blog app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --exit"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chai": "^4.1.2",
     "express": "^4.16.2",
+    "mocha": "^5.0.0",
     "morgan": "^1.9.0"
   }
 }
