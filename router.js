@@ -10,11 +10,11 @@ const {BlogPosts} = require('./models.js');
 BlogPosts.create('My Trip', 'This summer I travelled to Europe...', 'M.Barker');
 BlogPosts.create('My Blog', 'That is where i started this blog...', 'M.Barker');
 
-router.get('/blog2', (req, res) => {
+router.get('/', (req, res) => {
     res.json(BlogPosts.get());
 });
 
-router.post('/blog2', jsonParser, (req, res) => {
+router.post('/', jsonParser, (req, res) => {
 
     const requiredFields = ['title', 'content', 'author'];
 
@@ -29,7 +29,7 @@ router.post('/blog2', jsonParser, (req, res) => {
     res.status(201).json(post)
 });
 
-router.put('blog2/:id', jsonParser, (req, res) => {
+router.put('/:id', jsonParser, (req, res) => {
         const requiredFields = ['title', 'content', 'author'];
         for (let i = 0; i < requiredFields.length; i++) {
             const field = requiredFields[i];
@@ -53,7 +53,7 @@ router.put('blog2/:id', jsonParser, (req, res) => {
     res.status(204).end();
 });
 
-router.delete('blog2/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
     BlogPosts.delete(req.params.id);
     res.status(204).end();
 });
