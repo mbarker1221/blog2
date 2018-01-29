@@ -8,7 +8,7 @@ const app = express();
 const router = express.Router();
 
 app.use(morgan('common'));
-app.use('/blog-posts', BlogPostsRouter);
+app.use('/blog2', BlogPostsRouter);
 
 //const {BlogPosts} = require('./models.js');
 
