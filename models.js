@@ -32,8 +32,7 @@ const BlogPosts = {
     if (id !== null) {
       return this.posts.find(post => post.id === id);
     }
-    return this.posts;
-  }
+    return post;
   },
   delete: function(id) {
     const postIndex = this.posts.findIndex(
