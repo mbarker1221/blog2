@@ -31,9 +31,10 @@ describe('BlogPosts', function() {
         res.body.forEach(function(item) {
           item.should.be.a('object');
           item.should.include.keys(expectedKeys);
-        });
-      });
-  });
+       done();
+      })
+  }
+}
 
   it('should add a blog post on POST', function() {
     const newBlog = { title: 'my blog', body: ['It was just another day at the office...'], author: 'M.Barker'};
@@ -50,10 +51,10 @@ describe('BlogPosts', function() {
         res.body.forEach(function(item) {
           item.should.be.a('object');
           item.should.include.keys(expectedKeys);
-       
-      });
-  });
-
+        done();
+      })
+  }
+}
   it('should update blog on PUT', function() {
 
     const updateData = {
@@ -76,8 +77,10 @@ describe('BlogPosts', function() {
         res.should.have.status(200);
         res.should.be.json;
         res.boyd.should.include.keys('title', 'content', 'author');
-      });
-  });
+       done();
+      })
+  }
+}
 
   it('should delete blog on DELETE', function() {
     return chai.request(app)
@@ -89,6 +92,7 @@ describe('BlogPosts', function() {
       })
       .then(function(res) {
         expect(res).to.have.status(204);
-      });
-  });
-});
+      done();
+      })
+  }
+}
