@@ -25,8 +25,8 @@ router.post('/', jsonParser, (req, res) => {
             return res.status(400).send(message);
         }
     }
-    const post = BlogPosts.create(req.body.title, req.body.content, req.body.author);
-    res.status(201).json(post)
+    const newBlog = BlogPosts.create(req.body.title, req.body.content, req.body.author);
+    res.status(201).json(newBlog)
 });
 
 router.put('/:id', jsonParser, (req, res) => {
@@ -43,7 +43,7 @@ router.put('/:id', jsonParser, (req, res) => {
         return res.status(400).send(message);
     }
 
-    const newItem = BlogPosts.update({
+    const newBlog= BlogPosts.update({
         id: req.params.id,
         title: req.params.title,
         content: req.body.content,

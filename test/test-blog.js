@@ -25,11 +25,12 @@ describe('BlogPosts', function() {
 
         res.should.have.status(200);
         res.should.be.json;
-        res.body.should.be.a('array');
-        res.body.should.have.length.of.at.least(1);
+        res.body.should.be.a('object');
+        res.body.content.should.have.length.of.at.least(1);
+        const expectedKeys = ['title', 'content', 'author'];
         res.body.forEach(function(item) {
           item.should.be.a('object');
-          item.should.include.keys('title', 'content', 'author');
+          item.should.include.keys(expectedKeys);
         });
       });
   });
@@ -40,12 +41,16 @@ describe('BlogPosts', function() {
       .post('/BlogPosts')
       .send(newBlog)
       .then(function(res) {
-        res.should.have.status(201);
+
+        res.should.have.status(200);
         res.should.be.json;
         res.body.should.be.a('object');
-        res.body.should.include.keys('title', 'content', 'author');
-        res.body.title.should.equal(newBlog.title);
-        res.body.content.should.be.a('array');
+        res.body.content.should.have.length.of.at.least(1);
+        const expectedKeys = ['title', 'content', 'author'];
+        res.body.forEach(function(item) {
+          item.should.be.a('object');
+          item.should.include.keys(expectedKeys);
+       
       });
   });
 
@@ -53,7 +58,7 @@ describe('BlogPosts', function() {
 
     const updateData = {
       title: 'foo',
-      content: ['bizz', 'bang'],
+      content: [' '],
       author: 'me'
     };
 
@@ -70,7 +75,6 @@ describe('BlogPosts', function() {
       .then(function(res) {
         res.should.have.status(200);
         res.should.be.json;
-        //res.body.should.be.a.('object');
         res.boyd.should.include.keys('title', 'content', 'author');
       });
   });
@@ -84,7 +88,7 @@ describe('BlogPosts', function() {
           .delete(`/BlogPosts/${res.body[0].id}`)
       })
       .then(function(res) {
-        res.should.have.status(204);
+        expect(res).to.have.status(204);
       });
   });
 });
