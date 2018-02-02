@@ -19,6 +19,7 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "mocha": "^5.0.0"
+<<<<<<< HEAD
   },
   "directories": {
     "test": "test"
@@ -31,4 +32,7 @@
     "url": "https://github.com/mbarker1221/blog2/issues"
   },
   "homepage": "https://github.com/mbarker1221/blog2#readme"
+=======
+  }
+>>>>>>> f99cf4cb7551dc668074dbd655f13f5e4ab941a5
 }
