@@ -2,7 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const BlogPostsRouter = require('./router.js');
 const app = express();
-const router = express.Router();
+//const router = express.Router();
 
 app.use(morgan('common'));
 app.use('/', BlogPostsRouter);
